@@ -7,4 +7,4 @@
 2. הפעילו אותה: `.\venv\Scripts\activate`
 3. התקינו ספריות: `pip install -r requirements.txt`
 4. צרו קובץ `.env` עם ה-API Key שלכם.
-5. הריצו: `streamlit run web_app.py`
+5. הריצו: `streamlit run test/web_app.py`
