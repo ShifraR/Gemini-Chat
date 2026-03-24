@@ -37,7 +37,7 @@ pip install -r requirements.txt
 3. הרצת האפליקציה
 הריצו את הפקודה הבאה:
 
-Bash
+```bash
 streamlit run web_app.py
 ```
 הדפדפן ייפתח אוטומטית עם ממשק הצ'אט!
