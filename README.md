@@ -24,6 +24,7 @@ python -m venv venv
 
 # התקנת הספריות הדרושות
 pip install -r requirements.txt
+```
 2. הגדרת מפתח ה-API
 בתיקיית הפרויקט תמצאו קובץ בשם .env.
 
@@ -38,6 +39,7 @@ pip install -r requirements.txt
 
 Bash
 streamlit run web_app.py
+```
 הדפדפן ייפתח אוטומטית עם ממשק הצ'אט!
 
 🔑 איך מקבלים מפתח API? (מדריך למתחילים)
