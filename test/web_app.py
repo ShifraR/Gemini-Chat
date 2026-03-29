@@ -4,8 +4,23 @@ import requests
 from dotenv import load_dotenv
 
 # --- הגדרות נטפרי וסביבה ---
-os.environ['SSL_CERT_FILE'] = r'C:\ProgramData\NetFree\CA\netfree-ca-bundle-curl.crt'
+# בדיקה: האם אנחנו רצים על ווינדוס (מקומי) או בלינוקס (דוקר/ענן)
+# ובדיקה נוספת: האם הקובץ של נטפרי בכלל קיים בנתיב הזה
+netfree_windows_path = r'C:\ProgramData\NetFree\CA\netfree-ca-bundle-curl.crt'
+
+if os.name == 'nt' and os.path.exists(netfree_windows_path):
+    # אנחנו בווינדוס והתעודה קיימת - נגדיר אותה
+    os.environ['SSL_CERT_FILE'] = netfree_windows_path
+    os.environ['REQUESTS_CA_BUNDLE'] = netfree_windows_path
+    print("NetFree certificate loaded for Windows.")
+else:
+    # אנחנו בדוקר או בענן - לא נוגעים בנתיבי ווינדוס!
+    # בדוקר, הגדרנו את התעודה כבר ברמת ה-Dockerfile, אז הכל יעבוד אוטומטית.
+    print("Running in non-Windows environment (Docker/Cloud). Using system certificates.")
+
+    
 load_dotenv()
+
 API_KEY = os.getenv("GOOGLE_API_KEY")
 URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key={API_KEY}"
 
